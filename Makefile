@@ -1,8 +1,9 @@
 NAME= push_swap
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 LIBFT_DIR   = libft
 LIBFT_LIB   = $(LIBFT_DIR)/libft.a
-SRC= push_swap.c error.c stack_check.c stack_utils.c
+SRC= push_swap.c errors.c stack_check.c stack_utils.c three_five.c \
+	sort/rotate.c sort/swap.c sort/reverse_rotate.c sort/push.c sort_stacks.c
 
 
 
@@ -24,3 +25,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean
+

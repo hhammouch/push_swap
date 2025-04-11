@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 00:54:37 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/03 19:08:07 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:59:53 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	check_arg_len(char **arg)
 		exit_error();
 	return (1);
 }
+
 static void	check_error(char **split)
 {
 	free_arg(split);
@@ -54,7 +55,8 @@ static void	check_arg(char **argv, t_stack **a)
 		free_arg(split);
 		i++;
 	}
-	
+	if (check_duplicates(*a))
+		stack_error(*a, NULL);
 }
 
 int	main(int argc, char **argv)
@@ -69,10 +71,17 @@ int	main(int argc, char **argv)
 		if (!argv[1][0] || argv[1][0] == '\0')
 			exit_error();
 		check_arg(argv, &a);
-		while(a)
-		{
-			printf("%d|",a->value);
-			a = a->next;
-		}
+		if (is_sorted(a))
+			return (free_stack(&a), 0);
+		else if (ft_stacksize(a) <= 3)
+			sort_three(&a);
+		else if (ft_stacksize(a) <= 5)
+			sort_five(&a, &b);
+		else
+			sort_stacks(&a, &b);
 	}
+	else
+		return (1);
+	free_stack(&a);
+	return (0);
 }
