@@ -1,28 +1,43 @@
-NAME= push_swap
-CFLAGS= -Wall -Werror -Wextra -g
-LIBFT_DIR   = libft
-LIBFT_LIB   = $(LIBFT_DIR)/libft.a
+NAME = push_swap
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
+RM = rm -f
+
+SRC_DIR = src
+LIBFT_DIR = libft
+BONUS_DIR = bonus
+
 SRC= push_swap.c errors.c stack_check.c stack_utils.c three_five.c \
 	sort/rotate.c sort/swap.c sort/reverse_rotate.c sort/push.c sort_stacks.c
 
+LIBFT = $(LIBFT_DIR)/libft.a
 
+BONUS = $(BONUS_DIR)/checker
 
-all: $(NAME) $(LIBFT_LIB)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(LIBFT_LIB) $(SRC)
-	cc $(CFLAGS) $(SRC) $(LIBFT_LIB) -o $(NAME)
+bonus: $(LIBFT) $(BONUS)
 
-$(LIBFT_LIB):
+$(BONUS):
+	@$(MAKE) -C $(BONUS_DIR)
+
+$(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
+$(NAME): $(SRC) $(LIBFT)
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(BONUS_DIR) fclean
 
 re: fclean all
 
 .PHONY: clean
-

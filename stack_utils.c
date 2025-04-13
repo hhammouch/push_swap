@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 14:58:04 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/11 19:57:16 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:33:51 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,23 @@ t_stack	*find_max_node(t_stack *a)
 
 void	add_back(t_stack **stack, int value)
 {
-	t_stack	*new;
-	t_stack	*temp;
+	t_stack	*new_node;
+	t_stack	*last;
 
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		exit_error();
-	new->value = value;
-	new->next = NULL;
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return ;
+	new_node->value = value;
+	new_node->next = NULL;
 	if (!*stack)
 	{
-		new->prev = NULL;
-		*stack = new;
+		*stack = new_node;
+		return ;
 	}
-	else
-	{
-		temp = *stack;
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new;
-		new->prev = temp;
-	}
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = new_node;
 }
 
 int	ft_stacksize(t_stack *a)

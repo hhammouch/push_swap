@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 14:40:47 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/08 18:52:13 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:24:11 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	is_sorted(t_stack *a)
 {
-	t_stack	*temp;
+	t_stack	*tmp;
 
-	temp = a;
-	while (temp->next)
+	tmp = a;
+	if (!a)
+		return (0);
+	while (tmp->next)
 	{
-		if (temp->value > temp->next->value)
+		if (tmp->value > tmp->next->value)
 			return (0);
-		temp = temp->next;
+		tmp = tmp->next;
 	}
 	return (1);
 }

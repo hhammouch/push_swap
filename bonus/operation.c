@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 15:21:53 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/13 17:38:49 by hhammouc         ###   ########.fr       */
+/*   Created: 2025/04/12 09:36:09 by hhammouc          #+#    #+#             */
+/*   Updated: 2025/04/13 17:42:11 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker.h"
 
-static void	rotate(t_stack **stack)
+void	push(t_stack **src, t_stack **dst)
+{
+	t_stack	*tmp;
+
+	if (!*src)
+		return ;
+	tmp = *src;
+	*src = (*src)->next;
+	tmp->next = *dst;
+	*dst = tmp;
+}
+
+void	rotate(t_stack **stack)
 {
 	t_stack	*last_node;
 	t_stack	*first;
@@ -26,21 +38,26 @@ static void	rotate(t_stack **stack)
 	first->next = NULL;
 }
 
-void	ra(t_stack **a)
-{
-	rotate(a);
-	ft_putstr_fd("ra\n", 1);
-}
-
-void	rb(t_stack **b)
-{
-	rotate(b);
-	ft_putstr_fd("rb\n", 1);
-}
-
-void	rr(t_stack **a, t_stack **b)
+void	rotate_rr(t_stack **a, t_stack **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_putstr_fd("rr\n", 1);
+}
+
+void	swap(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack	*temp2;
+
+	temp = *stack;
+	temp2 = temp->next;
+	temp->next = temp2->next;
+	temp2->next = temp;
+	*stack = temp2;
+}
+
+void	swap_ss(t_stack **a, t_stack **b)
+{
+	swap(a);
+	swap(b);
 }

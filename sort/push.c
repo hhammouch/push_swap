@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:04:59 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/11 18:04:20 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:26:21 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ static void	push(t_stack **src, t_stack **dst)
 		return ;
 	tmp = *src;
 	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
 	tmp->next = *dst;
-	if ((*dst))
-		(*dst)->prev = tmp;
 	*dst = tmp;
 }
 

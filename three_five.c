@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_sorting.c                                     :+:      :+:    :+:   */
+/*   three_five.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 11:30:34 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/11 18:05:22 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:23:57 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	min_pos_finder(t_stack *stack)
 	int	min_p;
 	int	min_val;
 	int	pos;
-	
+
 	min_p = 0;
 	min_val = stack->value;
 	pos = 0;
@@ -65,7 +65,7 @@ static void	min_move_to_top(t_stack **stack)
 void	sort_five(t_stack **a, t_stack **b)
 {
 	int	len;
-	
+
 	len = ft_stacksize(*a);
 	if (len > 5 || len < 4)
 		return ;

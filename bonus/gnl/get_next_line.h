@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 13:29:00 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/13 17:26:29 by hhammouc         ###   ########.fr       */
+/*   Created: 2024/12/07 22:45:46 by hhammouc          #+#    #+#             */
+/*   Updated: 2025/04/12 10:42:49 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-static	void	swap(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*temp2;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-	temp = *stack;
-	temp2 = temp->next;
-	temp->next = temp2->next;
-	temp2->next = temp;
-	*stack = temp2;
-}
+# include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
-void	sa(t_stack **a)
-{
-	swap(a);
-	ft_putstr_fd("sa\n", 1);
-}
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
 
-void	sb(t_stack **b)
-{
-	swap(b);
-	ft_putstr_fd("sb\n", 1);
-}
-
-void	ss(t_stack **a, t_stack **b)
-{
-	swap(a);
-	swap(b);
-	ft_putstr_fd("ss\n", 1);
-}
+#endif

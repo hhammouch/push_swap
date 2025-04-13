@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 15:22:05 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/13 17:35:46 by hhammouc         ###   ########.fr       */
+/*   Created: 2025/04/13 17:40:21 by hhammouc          #+#    #+#             */
+/*   Updated: 2025/04/13 17:43:19 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker.h"
 
 static t_stack	*get_last(t_stack *stack, int before_last)
 {
@@ -31,7 +31,7 @@ static t_stack	*get_last(t_stack *stack, int before_last)
 	return (stack);
 }
 
-static void	reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*before_last;
@@ -45,21 +45,8 @@ static void	reverse_rotate(t_stack **stack)
 	before_last->next = NULL;
 }
 
-void	rra(t_stack **a)
-{
-	reverse_rotate(a);
-	ft_putstr_fd("rra\n", 1);
-}
-
-void	rrb(t_stack **b)
-{
-	reverse_rotate(b);
-	ft_putstr_fd("rrb\n", 1);
-}
-
-void	rrr(t_stack **a, t_stack **b)
+void	reverse_rotate_rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
 }

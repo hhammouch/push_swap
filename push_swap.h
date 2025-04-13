@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 00:55:06 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/11 18:55:46 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:30:43 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }				t_stack;
-
 
 void	set_range(t_stack **a, t_stack **b);
 void	stack_copy(t_stack *stack, int *arr);
@@ -44,7 +42,6 @@ void	ra(t_stack **a);
 void	ss(t_stack **a, t_stack **b);
 void	sb(t_stack **b);
 void	sa(t_stack **a);
-void	sort_stack(t_stack	**a, t_stack **b);
 t_stack	*find_max_node(t_stack *a);
 void	sort_three(t_stack	**a);
 int		ft_stacksize(t_stack *a);
