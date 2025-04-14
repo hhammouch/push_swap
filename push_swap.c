@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 00:54:37 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/11 18:59:53 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:22:17 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static int	check_arg_len(char **arg)
 	return (1);
 }
 
-static void	check_error(char **split)
+static void	check_error(char **split, t_stack **a)
 {
 	free_arg(split);
+	if (a && *a)
+        free_stack(a);
 	exit_error();
 }
 
@@ -44,12 +46,12 @@ static void	check_arg(char **argv, t_stack **a)
 		while (split[j])
 		{
 			if (is_str_not_number(split[j]))
-				check_error(split);
+				check_error(split, a);
 			if (ft_atol(split[j]) > INT_MAX || ft_atol(split[j]) < INT_MIN)
-				check_error(split);
+				check_error(split, a);
 			if (split[j][0] == '-' || split[j][0] == '+')
 				if (split[j][1] == '\0')
-					check_error(split);
+					check_error(split, a);
 			add_back(a, ft_atol(split[j++]));
 		}
 		free_arg(split);
