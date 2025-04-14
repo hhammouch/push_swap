@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 09:36:09 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/13 17:42:11 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:04:27 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	swap(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*temp2;
 
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
 	temp = *stack;
 	temp2 = temp->next;
 	temp->next = temp2->next;
