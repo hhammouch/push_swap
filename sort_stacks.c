@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:53:52 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/13 19:31:22 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/14 03:25:18 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,23 +104,6 @@ static int	max_value(t_stack *stack)
 	return (index);
 }
 
-// void    print_stack(t_stack *stack, char *name)
-// {
-//         t_stack *tmp;
-
-//         tmp = stack;
-//         write(1, name, ft_strlen(name));
-//         write(1, ": ", 2);
-//         while (tmp)
-//         {
-//                 ft_putnbr_fd(tmp->value, 1);
-//                 write(1, " ", 1);
-//                 tmp = tmp->next;
-//         }
-//         write(1, "\n", 1);
-// }
-
-
 void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	size;
@@ -129,21 +112,16 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	size = ft_stacksize(*a);
 	index_set(a, size);
 	set_range(a, b);
-	//print_stack(*b, "Stack B");
 	while (*b)
 	{
 		size = ft_stacksize(*b);
 		index = max_value(*b);
-		//printf("INDEX => %d\n", index);
 		if (index == 0)
 			pa(a, b);
 		else if (index > (size / 2) && index != 0)
 			rrb(b);
 		else if (index <= (size / 2) && index != 0)
 			rb(b);
-		//print_stack(*b, "Stack B");
-		//print_stack(*a, "Stack A");
 	}
-	//print_stack(*a, "Stack A");
 	free_stack(a);
 }

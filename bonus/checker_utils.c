@@ -6,7 +6,7 @@
 /*   By: hhammouc <hhammouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 09:49:18 by hhammouc          #+#    #+#             */
-/*   Updated: 2025/04/14 02:39:40 by hhammouc         ###   ########.fr       */
+/*   Updated: 2025/04/14 03:25:42 by hhammouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_error(char **split, t_stack **a)
 {
 	free_arg(split);
 	if (a && *a)
-        free_stack(a);
+		free_stack(a);
 	exit_error();
 }
 
